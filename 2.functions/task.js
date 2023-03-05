@@ -31,17 +31,17 @@ function differenceMaxMinWorker(...arr) {
   let min = Infinity;
   let max = -Infinity;
 
-  for(let i = 0; i <= arr.length; i++){
-    if(arr.length === 0){
-      return 0;
-    } else {
+  if(arr.length === 0){
+    return 0;
+  }
+  for(let i = 0; i < arr.length; i++){
     if(min > arr[i]){
       min = arr[i];
     }
     if(max < arr[i]){
       max = arr[i];
     }
-  }
+  
 }
   return max-min;
 }
@@ -78,10 +78,12 @@ function averageEvenElementsWorker(...arr) {
 
 function makeWork (arrOfArr, func) {
   let maxWorkerResult = -Infinity;
-
+  
   for(let i = 0; i < arrOfArr.length; i++){
-    if(maxWorkerResult < func(...arrOfArr[i])){
-      maxWorkerResult = func(...arrOfArr[i]);
+    const funcResult = func(...arrOfArr[i]);
+
+    if(maxWorkerResult < funcResult){
+      maxWorkerResult = funcResult;
     }
   }
   return maxWorkerResult;
