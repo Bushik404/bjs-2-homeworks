@@ -95,3 +95,38 @@ class Library {
         return null;
 }
 }
+
+class Student{
+    constructor(name){
+        this.name = name;
+        this.marks = {};
+    }
+
+    addMark(mark, nameSubject){
+        if(mark > 5 || mark < 2){
+        return;
+        }
+        if(this.marks[nameSubject] === undefined){
+            this.marks[nameSubject] = [mark]
+            return;
+        }
+        this.marks[nameSubject].push(mark);
+    }
+    getAverageBySubject(subject){
+        if(!this.marks[subject]){
+            return 0;
+        }
+        return this.marks[subject].reduce((acc ,element) => acc + element ,0) / this.marks[subject].length;
+    }
+    getAverage(){
+        let subjectArray = Object.keys(this.marks);
+        if( subjectArray.length === 0){
+            return 0;
+        }
+        let sum = 0;
+        for(let i = 0; i < subjectArray.length; i++){
+            sum += this.getAverageBySubject(subjectArray[i]);
+        }
+        return sum/subjectArray.length;
+    }
+}
