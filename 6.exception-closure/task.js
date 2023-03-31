@@ -1,12 +1,13 @@
 ﻿function parseCount(argument){
-    if( isNaN(Number.parseFloat(argument)) === true){
+    let parseNum = Number.parseFloat(argument);
+    if( isNaN(parseNum) === true){
        throw new Error("Невалидное значение");
    }
-   return (Number.parseFloat(argument));
+   return parseNum;
 }
 function validateCount(needParse){
     try{
-    parseCount(needParse)
+    return parseCount(needParse);
     } catch(error){
     return error;
     }
